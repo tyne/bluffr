@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script type="text/javascript" src="/faye/client.js"> </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var client = new Faye.Client('/faye');
+      $(function() {
+        $('#go').click(function(e) {
+          var $name = $("#name");
+          var $bid = $("#bid");
+          client.publish('/randomsession', {name: $name.val(), bid: $bid.val()});
+          $bid.val('');
+          e.preventDefault();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <label>Name</label><input id='name'/>
+      <label>Bid</label><input id='bid'/>
+      <button id='go'>Go</button>
+    </form>
+  </body>
+</html>

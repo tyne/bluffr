@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <script type="text/javascript" src="/faye/client.js"> </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var client = new Faye.Client('/faye');
+      var subscription = client.subscribe('/randomsession', function(message) {
+          var html = "<p><b>" + message.name + "</b>: " + message.bid + "</p>";
+        $('body').append(html);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Bids Hit Here</h1>
+    <p>To add a bid, open <a href='/bid'>this link in another tab</a></p>
+  </body>
+</html>
