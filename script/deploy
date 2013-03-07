@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# In order to have this run on git push add this to the remote repo:
+#  hooks/post-update
+#
+# export GIT_WORK_TREE=/path/to/webroot
+# mkdir -p $GIT_WORK_TREE
+# git checkout -f
+# cd $GIT_WORK_TREE
+# ./script/deploy.sh
