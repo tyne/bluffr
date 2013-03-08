@@ -1,7 +1,10 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'faye'
 gem 'thin'
 gem 'rack'
 gem 'sinatra'
 gem 'newrelic_rpm'
+gem 'rake'
+gem 'rspec'
+gem 'jasmine'
