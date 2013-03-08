@@ -3,7 +3,10 @@
     <script type="text/javascript" src="/faye/client.js"> </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-      var client = new Faye.Client('/faye');
+      var client = new Faye.Client('/faye', {
+        timeout: 5
+      });
+      client.disable('websocket');
       $(function() {
         $('#go').click(function(e) {
           var $name = $("#name");
