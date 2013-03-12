@@ -35,7 +35,7 @@ describe App do
       last_response.should be_ok
       body = last_response.body
       body.should match /\/faye\/client\.js/
-      body.should match /\/js\/session_manager\.js/
+      body.should match /\/javascripts\/session_manager\.js/
     end
 
     it 'allows scrum master to invite team members' do
@@ -68,7 +68,7 @@ describe App do
       last_response.should be_ok
 
       body = last_response.body
-      body.should include "Jonathan has joined"
+      body.should include "Hello, Jonathan!"
     end
   end
 end

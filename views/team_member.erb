@@ -1,1 +1,15 @@
-<p><%= request["name"] %> has joined</p>
+<script src="/faye/client.js"> </script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/javascripts/notifier.js"></script>
+<script src="/javascripts/session_client.js"></script>
+<script>
+  var client = new SessionClient();
+  var params = {};
+  $(window.location.search.replace(/^\?/, '').split(/&/)).each(function(key, value) {
+    var parts = value.split(/=/);
+    params[parts[0]] = parts[1];
+  });
+  var sessionid = params.id;
+  client.join(sessionid, params.name);
+</script>
+<p>Hello, <%= request["name"] %>!</p>
