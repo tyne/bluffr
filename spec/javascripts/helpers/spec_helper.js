@@ -1,9 +1,6 @@
-beforeEach(function() {
-  this.addMatchers({
-    toBePlaying: function(expectedSong) {
-      var player = this.actual;
-      return player.currentlyPlayingSong === expectedSong && 
-             player.isPlaying;
-    }
-  });
-});
+var Faye = function() {};
+
+Faye.Client = function() {};
+
+require('notifier.js');
+require('jquery-1.9.0.min.js');

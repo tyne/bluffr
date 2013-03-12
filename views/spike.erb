@@ -7,7 +7,7 @@
         timeout: 5
       });
       client.disable('websocket');
-      var subscription = client.subscribe('/randomsession', function(message) {
+      var subscription = client.subscribe('/randomsession', function(age) {
           var html = "<p><b>" + message.name + "</b>: " + message.bid + "</p>";
         $('body').append(html);
       });

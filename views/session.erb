@@ -1,5 +1,16 @@
 <script src="/faye/client.js"> </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/js/session_manager.js"></script>
+<script src="/javascripts/notifier.js"></script>
+<script src="/javascripts/session_manager.js"></script>
+<script>
+  var manager = new SessionManager();
+  var params = {};
+  $(window.location.search.replace(/^\?/, '').split(/&/)).each(function(key, value) {
+    var parts = value.split(/=/);
+    params[parts[0]] = parts[1];
+  });
+  var sessionid = params.id;
+  manager.start(sessionid);
+</script>
 
 <a href='mailto:?subject=Join%20Our%20Planning%20Session&body=<%= request.scheme %>://<%= request.host_with_port %>/session/join?id=<%= request["id"] %>'>Invite Team Members</a>
