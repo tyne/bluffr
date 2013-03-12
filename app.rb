@@ -19,4 +19,12 @@ class App < Sinatra::Application
   get '/session' do
     erb :session
   end
+
+  get '/session/join' do
+    erb :join
+  end
+
+  get '/session/accept' do
+    erb :team_member
+  end
 end

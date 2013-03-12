@@ -45,4 +45,30 @@ describe App do
       body.should include 'mailto:?subject=Join%20Our%20Planning%20Session&body=http://example.org/session/join?id=somesession'
     end
   end
+
+  describe 'Get /session/join' do
+    it 'allows a team member to join the session' do
+      get '/session/join?id=somesession'
+
+      last_response.should be_ok
+
+      body = last_response.body
+      body.should match /Welcome to the session/
+      body.should match form_to '/session/accept'
+      body.should match input_for 'id'
+      body.should match input_for "name"
+      body.should match 'Join'
+    end
+  end
+
+  describe 'Get /session/accept' do
+    it "informs team member that they have joined" do
+      get '/session/accept?id=someid&name=Jonathan'
+
+      last_response.should be_ok
+
+      body = last_response.body
+      body.should include "Jonathan has joined"
+    end
+  end
 end
