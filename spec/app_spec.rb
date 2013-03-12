@@ -33,8 +33,16 @@ describe App do
       get '/session?id=somesession'
 
       last_response.should be_ok
-      last_response.body.should match /\/faye\/client\.js/
-      last_response.body.should match /\/js\/session_manager\.js/
+      body = last_response.body
+      body.should match /\/faye\/client\.js/
+      body.should match /\/js\/session_manager\.js/
+    end
+
+    it 'allows scrum master to invite team members' do
+      get '/session?id=somesession'
+
+      body = last_response.body
+      body.should include 'mailto:?subject=Join%20Our%20Planning%20Session&body=http://example.org/session/join?id=somesession'
     end
   end
 end
