@@ -6,6 +6,10 @@ gem 'rack'
 gem 'sinatra'
 gem 'newrelic_rpm'
 gem 'rake'
-gem 'rspec'
-gem 'jasmine'
-gem 'guard-rspec'
+
+group :development, :test do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'jasmine'
+  gem 'guard-rspec'
+end
