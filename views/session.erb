@@ -3,14 +3,23 @@
 <script src="/javascripts/notifier.js"></script>
 <script src="/javascripts/session_manager.js"></script>
 <script>
-  var manager = new SessionManager();
-  var params = {};
-  $(window.location.search.replace(/^\?/, '').split(/&/)).each(function(key, value) {
-    var parts = value.split(/=/);
-    params[parts[0]] = parts[1];
+  $(function() {
+    var manager = new SessionManager();
+    var params = {};
+    $(window.location.search.replace(/^\?/, '').split(/&/)).each(function(key, value) {
+      var parts = value.split(/=/);
+      params[parts[0]] = parts[1];
+    });
+    var sessionid = params.id;
+    manager.start(sessionid);
+
+    $('[data-behaviour="start_round"]').on("click", function() {
+      console.log("clicked");
+      manager.beginRound();
+    });
   });
-  var sessionid = params.id;
-  manager.start(sessionid);
 </script>
 
 <a href='mailto:?subject=Join%20Our%20Planning%20Session&body=<%= request.scheme %>://<%= request.host_with_port %>/session/join?id=<%= request["id"] %>'>Invite Team Members</a>
+
+<a href='#' data-behaviour='start_round'>Start Round</a>

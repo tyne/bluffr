@@ -44,6 +44,13 @@ describe App do
       body = last_response.body
       body.should include 'mailto:?subject=Join%20Our%20Planning%20Session&body=http://example.org/session/join?id=somesession'
     end
+
+    it "allows scrum master to start a round" do
+      get '/session?id=somesession'
+
+      body = last_response.body
+      body.should include 'Start Round'
+    end
   end
 
   describe 'Get /session/join' do

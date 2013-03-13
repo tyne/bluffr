@@ -17,5 +17,23 @@ describe("SessionClient", function() {
 
       expect(mockFaye.publish).toHaveBeenCalledWith('/somesessionid/join', {name: 'Fred'});
     });
+
+    it("awaits the start of a round", function() {
+      spyOn(mockFaye, 'subscribe');
+
+      sessionClient.join('somesessionid', 'Fred');
+
+      expect(mockFaye.subscribe).toHaveBeenCalledWith("/somesessionid/new_round", sessionClient.handleRound);
+    });
+  });
+
+  describe("when a round is started", function() {
+    it("notifies the user to give their estimate", function() {
+      spyOn(Notifier, 'notify');
+
+      sessionClient.handleRound();
+
+      expect(Notifier.notify).toHaveBeenCalledWith("Give Your Estimate");
+    });
   });
 });
