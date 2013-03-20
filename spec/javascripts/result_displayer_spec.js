@@ -4,6 +4,20 @@ describe("Result Displayer", function() {
     "Jonathan": '456'
   };
 
+  beforeEach(function() {
+
+  $("body").append("<script id='results-template' type='text/x-handlebars-template'>
+<ul id='results'>
+{{#each results}}
+  <li>
+    <span class='estimate'>{{this.bid}}</span>
+    <span class='name'>{{this.name}}</span>
+  </li>
+{{/each}}
+</ul>
+</script>");
+  });
+
   it("displays a message", function() {
     ResultDisplayer.display(results);
 

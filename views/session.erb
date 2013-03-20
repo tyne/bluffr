@@ -1,6 +1,16 @@
 <script src="/faye/client.js"> </script>
 <script src="/javascripts/result_displayer.js"></script>
 <script src="/javascripts/session_manager.js"></script>
+<script id="results-template" type="text/x-handlebars-template">
+<ul id='results'>
+{{#each results}}
+  <li>
+    <span class='estimate'>{{this.bid}}</span>
+    <span class='name'>{{this.name}}</span>
+  </li>
+{{/each}}
+</ul>
+</script>
 <script>
   $(function() {
     var manager = new SessionManager();
@@ -21,3 +31,4 @@
 <a href='mailto:?subject=Join%20Our%20Planning%20Session&body=<%= request.scheme %>://<%= request.host_with_port %>/session/join?id=<%= request["id"] %>'>Invite Team Members</a>
 
 <a href='#' data-behaviour='start_round'>Start Round</a>
+<div id='dynamic'></div>
