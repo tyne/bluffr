@@ -1,6 +1,4 @@
 <script src="/faye/client.js"> </script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/javascripts/notifier.js"></script>
 <script src="/javascripts/result_displayer.js"></script>
 <script src="/javascripts/session_manager.js"></script>
 <script>
@@ -15,7 +13,6 @@
     manager.start(sessionid);
 
     $('[data-behaviour="start_round"]').on("click", function() {
-      console.log("clicked");
       manager.beginRound();
     });
   });

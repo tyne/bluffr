@@ -1,7 +1,8 @@
 describe("Notifier", function() {
   it("displays a message", function() {
+    spyOn($, 'jGrowl');
     Notifier.notify("Foo");
 
-    expect($("body").html()).toMatch("Foo");
+    expect($.jGrowl).toHaveBeenCalledWith("Foo");
   });
 });
