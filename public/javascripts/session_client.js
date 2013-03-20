@@ -18,3 +18,8 @@ SessionClient.prototype.handleRound = function() {
   Notifier.notify("Give Your Estimate");
 }
 
+SessionClient.prototype.bid = function(estimate) {
+  var _this = this;
+
+  _this.client.publish(_this.channel('bid'), {name: _this.memberName, bid: estimate});
+}

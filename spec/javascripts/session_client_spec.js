@@ -36,4 +36,17 @@ describe("SessionClient", function() {
       expect(Notifier.notify).toHaveBeenCalledWith("Give Your Estimate");
     });
   });
+
+  describe("when a team member gives the estimate", function() {
+    beforeEach(function() {
+      spyOn(mockFaye, 'publish');
+      sessionClient.join('somesessionid', 'Fred');
+    });
+
+    it("notifies the host", function() {
+      sessionClient.bid("5");
+
+      expect(mockFaye.publish).toHaveBeenCalledWith('/somesessionid/bid', {name: 'Fred', bid: "5"});
+    });
+  });
 });

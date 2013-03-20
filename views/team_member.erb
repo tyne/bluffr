@@ -12,6 +12,19 @@
     });
     var sessionid = params.id;
     client.join(sessionid, params.name);
+
+    $('#estimation').on('click', 'input[type="submit"]',  function(event) {
+      event.preventDefault();
+
+      var bid=$('#estimate').val();
+      client.bid(bid);
+    });
   });
 </script>
 <p>Hello, <%= request["name"] %>!</p>
+
+<form id='estimation'>
+  <label for='estimate'>Estimation:</label>
+  <input type='text' id='estimate'/>
+  <input type='submit' value='Go'/>
+</form>
